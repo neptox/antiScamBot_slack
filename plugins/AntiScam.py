@@ -265,13 +265,16 @@ class AddrDetection(Plugin):
 
 
         #REGEX expression
+        regexCheck = 'http'
         regex = r"(?:[-a-zA-Z0-9@:%_\+~.#=]{2,256}\.)?([-a-zA-Z0-9@:%_\+~#=]*\.[a-z]{2,12})\b(?:[-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)"
+        
 
         #Regular expression for URLs
+        urlsCheck = re.findall(regexCheck, data['text'])
         urls = re.findall(regex, data['text'])
 
         #If URL is found
-        if urls:
+        if urlsCheck:
 
             #Domain of URL
             domain = urls[0]
